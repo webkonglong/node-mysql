@@ -1,4 +1,4 @@
-# node链接本地mysql实现增删改查
+# node连接本地mysql实现增删改查
 
 
 ##### 前期准备
@@ -24,8 +24,8 @@
 ##### 插入数据
 
 ``` javascript
-  var addSql = 'INSERT INTO test(userid, balance, type) VALUES(?,?,?)' // test为表名
-  var addSqlParams = [1, 8888, '成功'] // 和上面test后面的key一一对应
+  var addSql = 'INSERT INTO userinfo(userid, balance, type) VALUES(?,?,?)' // userinfo为表名
+  var addSqlParams = [1, 8888, '成功'] // 和上面userinfo后面的key一一对应
   connection.query(addSql, addSqlParams, (err, result) => {
     if (err) {
       console.log(`插入失败::${err.message}`)
@@ -39,7 +39,7 @@
 ##### 修改数据
 
 ``` javascript
-  var modSql = 'UPDATE test SET balance = ? WHERE userid = ?' // 根据test表的userid值去更新对应的userid值
+  var modSql = 'UPDATE userinfo SET balance = ? WHERE userid = ?' // 根据userinfo表的userid值去更新对应的userid值
   var modSqlParams = [0, 1] // 索引0是表示吧balance修改为0,索引1 是代表修改userid为1的balance值
   connection.query(modSql, modSqlParams, (err, result) => {
     if (err) {
@@ -55,7 +55,7 @@
 ##### 获取数据
 
 ``` javascript
-  var sql = 'SELECT * FROM test' // 获取test表数据
+  var sql = 'SELECT * FROM userinfo' // 获取userinfo表数据
   connection.query(sql, (err, result) => {
     if (err) {
       console.log(`获取失败::${err.message}`)
@@ -66,10 +66,10 @@
 ```
 
 
-#### 删除数据
+##### 删除数据
 
 ``` javascript
-  var delSql = 'DELETE FROM test where userid=1' // 删除test表userid为1的数据
+  var delSql = 'DELETE FROM userinfo where userid=1' // 删除userinfo表userid为1的数据
   connection.query(delSql, (err, result) => {
     if (err) {
       console.log(`删除失败::${err.message}`)
